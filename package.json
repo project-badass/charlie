@@ -1,0 +1,32 @@
+{
+  "name": "intern",
+  "version": "0.0.1",
+  "description": "A script that will take care of some (hopefully most?) of the grunt work involved in setting up an API - database schema and route generation.",
+  "main": "intern.js",
+  "scripts": {
+    "start": "node intern",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tupakapoor/intern.git"
+  },
+  "keywords": [
+    "api",
+    "rest",
+    "schema",
+    "database",
+    "endpoint",
+    "node",
+    "intern"
+  ],
+  "author": "Ameesh Kapoor",
+  "license": "Public Domain",
+  "bugs": {
+    "url": "https://github.com/tupakapoor/intern/issues"
+  },
+  "homepage": "https://github.com/tupakapoor/intern",
+  "dependencies": {
+    "strip-json-comments": "^1.0.2"
+  }
+}
