@@ -10,7 +10,7 @@ My initial goal is to support [HapiJS](https://github.com/hapijs/hapi) (a Node H
 ### How?
 
 ```sh
-$ node charlie /Users/tupakapoor/rats/schema.json
+$ node charlie /Users/badass/rats/schema.json
 ```
 The only argument to the script is the path to a JSON file that is a schema for your object models. Using this schema, we can very easily create the database side of things, but also generate all of the object CRUD routes and their basic functionality.
 
@@ -20,4 +20,4 @@ I wasted way too much time trying to set this all up manually (without having mu
 
 ### Who?
 
-Intern is written and maintained by [Ameesh Kapoor](http://github.com/tupakapoor) ([@tupakapoor](http://twitter.com/tupakapoor)) with significant advice and input from [Johnny Domino](http://github.com/jmonster) ([@jmonsterflex](http://twitter.com/jmonsterflex)) of [Yayuhh LLC](http://yayuhh.com). Please feel free to contribute or say hi on Twitter.
+Charlie is written and maintained by [Ameesh Kapoor](http://github.com/tupakapoor) ([@tupakapoor](http://twitter.com/tupakapoor)) with significant advice and input from [Johnny Domino](http://github.com/jmonster) ([@jmonsterflex](http://twitter.com/jmonsterflex)) of [Yayuhh LLC](http://yayuhh.com). Please feel free to contribute or say hi on Twitter.
