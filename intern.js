@@ -12,7 +12,7 @@ if (process.argv.length < 3) {
 var schemaPath = path.normalize(process.argv[2]);
 var workingFolder = path.dirname(schemaPath);
 try {
-	var schemaData = fs.readFileSync(schemaPath)1;
+	var schemaData = fs.readFileSync(schemaPath, { encoding : 'utf8'});
 } catch (err) {
 	console.log(err);
 	console.log("Usage: node charlie /path/to/object/schema");
