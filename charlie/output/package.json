@@ -1,0 +1,33 @@
+{
+  "name": "NAME",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/lab"
+  },
+  "repository": {
+    "type": "git",
+    "url": "URL"
+  },
+  "author": "YOUR NAME",
+  "bugs": {
+    "url": "BUGS PAGE"
+  },
+  "homepage": "HOMEPAGE",
+  "dependencies": {
+    "bookshelf": "^0.8.1",
+    "confidence": "^1.1.0",
+    "hapi": "^8.8.0",
+    "hapi-auth-basic": "^3.0.0",
+    "joi": "^6.5.0",
+    "knex": "^0.8.6",
+    "lodash": "^3.10.0",
+    "node-uuid": "^1.4.3",
+    "hapi-auth-bearer-token": "^3.1.1"
+  },
+  "devDependencies": {
+    "chai": "^3.1.0",
+    "lab": "^5.13.0"
+  }
+}
