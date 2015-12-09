@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/project-badass/charlie",
   "dependencies": {
-    "strip-json-comments": "^1.0.2"
+    "strip-json-comments": "^1.0.2",
+    "fs-extra": "^0.26.2"
   }
 }
