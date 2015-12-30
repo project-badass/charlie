@@ -1,8 +1,9 @@
 var fs = require('fs-extra');
 var path = require('path');
 var stripComments = require('strip-json-comments');
-var models = require('./charlie/models')
+var models = require('./charlie/models');
 var routes = require('./charlie/routes');
+var validator = require('./charlie/validator');
 
 var schema = validateInput();
 validateOutput();
@@ -18,45 +19,32 @@ for (var model in schema) {
 }
 
 function validateInput() {
-	var usage = "Usage: node charlie /path/to/object/schema";
+	var usage = "Usage: node charlie /path/to/object/schema [/path/to/output]";
 	var visit = "  * Visit https://github.com/project-badass/charlie\n  * for more information.";
 
-	if (process.argv.length < 3) {
-		console.log(usage + "\n" + visit);
+	if (!validator.cmdLine() || !validator.schemaPath()) {
 		process.exit(1);
 	}
 
-	var schemaPath = path.normalize(process.argv[2]);
-	var workingFolder = path.dirname(schemaPath);
-	try {
-		var schemaData = fs.readFileSync(schemaPath, { encoding : 'utf8'});
-	} catch (err) {
-		console.log(usage);
-		console.log("  * There was a problem reading your object schema.");
-		console.log("  * Please verify the path and that the permissions");
-		console.log("  * allow this process to read the file.");
-		console.log(visit);
+	var schema = validator.schemaFormat();
+	if (!schema) {
 		process.exit(2);
-	}
-
-	var schema = null;
-	try {
-		schema = JSON.parse(stripComments(schemaData));
-	} catch (err) {
-		console.log(usage);
-		console.log("  * There was a problem parsing your object schema.");
-		console.log("  * Please verify it is valid JSON.");
-		console.log(visit);
-		process.exit(3);
 	}
 
 	return schema;
 }
 
 function validateOutput() {
-	fs.copySync('./charlie/output', './output', { clobber: true });
+	outputDir = '';
+	// if (process.argv[3]) {
+	// 	outputDir = process.argv[3];
+	// } else {
+		outputDir = '../charlie-output';
+	// }
+
 	try {
-		fs.accessSync('./output', fs.W_OK);
+		fs.copySync('./charlie/output', outputDir, { clobber: true });
+		fs.accessSync(outputDir, fs.F_OK);
 	} catch (err) {
 		console.log('Charlie does not have write permissions!\n  * Charlie needs write permissions in order to\n  * create the output.');
 		process.exit(4);
