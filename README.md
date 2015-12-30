@@ -5,7 +5,7 @@
 ### What?
 A script that will take care of some (hopefully most?) of the Charlie work involved in setting up an API - database schema and route generation. It is all fairly boilerplate, but by not wrapping it in a module and instead generating source, you are able to use and modify at will. 
 
-My initial goal is to support [HapiJS](https://github.com/hapijs/hapi) (a Node HTTP framework) on the server side and [MongoDB](http://www.mongodb.org) on the database side. Ideally the architecture will be such that adding other frameworks/databases is just a matter of outputting the correct syntax. I would eventually like to support at least 1 flavor of SQL database (MySQL/Postgres, for example).
+My initial goal is to support [HapiJS](https://github.com/hapijs/hapi) (a Node HTTP framework) for the web interface and [Knex](http://www.knexjs.org) and [Bookshelf](http://www.bookshelf.org) for any database interaction. Ideally the architecture will be such that adding other frameworks/databases is just a matter of outputting the correct syntax. I would eventually like to support at least 1 flavor of SQL database (MySQL/Postgres, for example).
 
 ### How?
 
