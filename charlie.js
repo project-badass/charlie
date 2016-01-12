@@ -1,18 +1,17 @@
 var fs = require('fs-extra');
-var path = require('path');
-var stripComments = require('strip-json-comments');
 var models = require('./charlie/models');
 var routes = require('./charlie/routes');
 var validator = require('./charlie/validator');
 
 var schema = validateInput();
 validateOutput();
+console.log('completed validations');
 
 // db(schema);
-models(schema);
+models(schema.models);
 
-for (var model in schema) {
-  if (schema.hasOwnProperty(model)) {
+for (var model in schema.models) {
+  if (schema.models.hasOwnProperty(model)) {
   	// models(model);
     routes(model);
   }
@@ -22,15 +21,22 @@ function validateInput() {
 	var usage = "Usage: node charlie /path/to/object/schema [/path/to/output]";
 	var visit = "  * Visit https://github.com/project-badass/charlie\n  * for more information.";
 
-	if (!validator.cmdLine() || !validator.schemaPath()) {
+	if (!validator.cmdLine()) {
+		console.log('failed cmd line validation');
 		process.exit(1);
+	}
+
+	if (!validator.schemaPath()) {
+		console.log('failed schema path validation');
+		process.exit(2);
 	}
 
 	var schema = validator.schemaFormat();
 	if (!schema) {
-		process.exit(2);
+		process.exit(3);
 	}
 
+	console.log('Finished validating input');
 	return schema;
 }
 
@@ -49,4 +55,6 @@ function validateOutput() {
 		console.log('Charlie does not have write permissions!\n  * Charlie needs write permissions in order to\n  * create the output.');
 		process.exit(4);
 	}
+
+	console.log('Finished validating output');
 }
