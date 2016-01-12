@@ -1,0 +1,158 @@
+{
+  "models": {
+    // users
+    "users": {
+      "email": {
+        "type": "string",
+        "required": true,
+        "format": "^(.+)@(.+)\\.(.+){2,}" // x@x.2x
+      },
+      "password": {
+        "type": "string",
+        "required": true,
+        "format": "" // 8 chars, one upper one lower one number
+      },
+      "firstName": {
+        "type": "string",
+        "required": true
+      },
+      "lastName": {
+        "type": "string",
+        "required": true
+      },
+      "phone": {
+        "type": "string",
+        "required": true,
+        "format": "^(\\d){10,10}$" // 10 digits
+      },
+      "profilePic": {
+        "type": "string", // url
+        "required": true,
+        "format": "^\/\/" // format for url?
+      },
+      "gender": {
+        "type": "string",
+        "required": true
+      },
+      "birthdate": {
+        "type": "date",
+        "required": true
+      },
+      "locationCity": {
+        "type": "string",
+        "required": false
+      },
+      "locationState": {
+        "type": "string",
+        "required": true,
+        "format": "^[A-Z]{2,2}$"
+      }
+    },
+    // events
+    "events": {
+      "title": {
+        "type": "string",
+        "required": true
+      },
+      "startDateTime": {
+        "type": "date",
+        "required": true
+      },
+      "noteToGuests": {
+        "type": "string",
+        "required": false
+      },
+      "locationName": {
+        "type": "string",
+        "required": true
+      },
+      "locationMetaData": {
+        "type": "object",   // depends on sql or not, would be address/gps coordinates/image url if available
+        "required": false
+      }
+    },
+    // hosts
+    "hosts": {
+      "userId": {
+        "type": "string", // id
+        "required": true
+      },
+      "eventId": {
+        "type": "string", // id
+        "required": true
+      },
+      "userHostTitle": {
+        "type": "string",
+        "required": false
+      }
+    },
+    // guests
+    "guests": {
+      "userId": {
+        "type": "string",
+        "required": true
+      },
+      "eventId": {
+        "type": "string",
+        "required": true
+      },
+      "accepted": {
+        "type": "boolean",
+        "required": true
+      }
+    },
+    // notifications
+    "notifications": {
+      "userId": {
+        "type": "string", // id
+        "required": true
+      },
+      "text": {
+        "type": "string",
+        "required": true
+      },
+      "relatedUserId": {
+        "type": "string",
+        "required": false
+      },
+      "timestamp": {
+        "type": "date",
+        "required": true
+      }
+    },
+    // messages
+    "messages": {
+      "userIdTo": {
+        "type": "string", // id
+        "required": true
+      },
+      "userIdFrom": {
+        "type": "string", // id
+        "required": true
+      },
+      "text": {
+        "type": "string",
+        "required": true
+      },
+      "timestamp": {
+        "type": "date",
+        "required": true
+      }
+    },
+    // matches
+    "matches": {
+      "userIdOne": {
+        "type": "string", // id
+        "required": true
+      },
+      "userIdTwo": {
+        "type": "string", // id
+        "required": true
+      },
+      "isMatched": {
+        "type": "boolean",
+        "required": true
+      }
+    }
+  }
+}
