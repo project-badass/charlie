@@ -1,3 +1,3 @@
-module.exports = function generateMigrations() {
+module.exports = function generateMigrations(schema) {
   
 }
